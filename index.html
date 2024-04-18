@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+  <script>
+    function toggleRegistrationForm() {
+      var loginForm = document.getElementById('login-form');
+      var registrationForm = document.getElementById('registration-form');
+      var successMessage = document.getElementById('success-message');
+
+      loginForm.classList.toggle('hidden');
+      registrationForm.classList.toggle('hidden');
+      successMessage.classList.add('hidden');
+    }
+  </script>
+</head>
+<body>
+  <h1>Login</h1>
+  <form id="login-form" action="/login" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br>
+
+    <input type="submit" value="Login">
+  </form>
+
+  <button onclick="toggleRegistrationForm()">Register</button>
+
+  <div id="registration-form" class="hidden">
+    <h1>Register</h1>
+    <form action="/register" method="post">
+      <label for="regUsername">Username:</label>
+      <input type="text" id="regUsername" name="regUsername" required><br>
+
+      <label for="regPassword">Password:</label>
+      <input type="password" id="regPassword" name="regPassword" required><br>
+
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" required><br>
+
+      <input type="submit" value="Register">
+    </form>
+  </div>
+
+  <div id="success-message" class="hidden">
+    Registered successfully! You can now log in using your new credentials.
+  </div>
+
+  <script>
+    var urlParams = new URLSearchParams(window.location.search);
+    var registered = urlParams.get('registered');
+    if (registered === 'true') {
+      toggleRegistrationForm();
+      var successMessage = document.getElementById('success-message');
+      successMessage.classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>

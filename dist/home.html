@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed Background Image</title>
+    <link href="output.css" rel="stylesheet">
+    <style>
+        @font-face {
+        font-family: 'CustomFont';
+    src: url('Font/Rock_Salt/RockSalt-Regular.ttf') format('truetype');
+    }
+
+    .title{
+    font-family: 'CustomFont',sans-serif;
+      }
+
+</style>
+
+</head>
+<body class="bg-fixed bg-center" style="background: linear-gradient(to bottom,yellow, white); height: 100vh; height:100%">
+    <div>
+    <nav class="flex justify-between items-center px-5 py-5 bg-transparent h-14">
+        <div class="flex gap-5">
+          <a href="#" class="mr-4 hover:shadow-2xl transition-transform duration-300 transform hover:scale-110" title="User"><img src="https://cdn-icons-png.flaticon.com/512/23/23144.png" class="h-10"></a>
+          <a href="#" class="mr-4 hover:shadow-2xl transition-transform duration-300 transform hover:scale-110" title="Post"><img src="https://img.icons8.com/?size=512&amp;id=1501&amp;format=png" class="h-10"></a>
+        </div>
+        <div class="flex gap-5">
+            <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" title="Menu"><img src="https://img.icons8.com/?size=512&id=82749&format=png" class="h-10"></button>
+          <div id="dropdown" class="mx-5 mt-10 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 absolute right-0">
+              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                <li>
+                  <a href="missingreport.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report Missing</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">About Us</a>
+                </li>
+                <li>
+                    <a href="home.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Home</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="index()">Sign out</a>
+                </li>
+              </ul>
+          </div>
+        </div>
+    </nav>
+      
+    <div id="title" class="title grid place-content-center align-text-top text-blue-400 font-semibold text-9xl italic font-sans py-52">
+        <div class="flex">
+        <h1>P</h1>
+        <img src="images/Paw_Print.svg" class="h-36 p-1">
+        <h1>wSome Adoptions</h1>
+        </div>
+    </div>
+    
+    <div class="grid gap-6">
+        <div class="grid gap-8 px-28 justify-center">
+            <button class="hover:shadow-2xl transition-transform duration-300 transform hover:scale-110" onclick='dog()'>
+                <div class="flex gap-6 bg-green-400 rounded-xl" style="height: 300px; width: 1500px;">
+                    <div><img src="images/DogLogo.jpg" class="h-65 w-60 p-4 rounded-3xl fixed"></div>
+                    <div class="ml-10 pl-60 py-5 text-2xl pr-3">Rescued and abandoned dogs are searching for caring individuals to give them a forever home. By adopting a rescued or abandoned dog, you become their hero, offering them love, security, and a fresh start. These loyal and affectionate canines have overcome hardships and are ready to shower their new family with unconditional love. When you adopt a rescued or abandoned dog, you not only gain a faithful companion but also play a vital role in giving them a second chance at a happy life. Open your heart and home to a deserving dog and experience the unmatched joy of pet adoption.</div>
+                </div>
+            </button> 
+            <button class="hover:shadow-2xl transition-transform duration-300 transform hover:scale-110" onclick='cat()'>
+                <div class="flex gap-6 bg-green-400 rounded-xl" style="height: 300px; width: 1500px;">
+                    <div><img src="images/CatLogo.jpg" class="h-72 w-60 p-4 rounded-3xl fixed"></div>
+                    <div class="ml-10 pl-60 py-5 text-2xl pr-3">Rescued and abandoned cats are seeking compassionate individuals to provide them with a loving home. By adopting a rescued or abandoned cat, you offer them a fresh start and a safe haven. These independent and graceful felines have faced adversity and are now looking for a place to call their own. When you choose to adopt a rescued or abandoned cat, you not only gain a wonderful companion but also make a significant impact by giving them a second chance. Embrace the joys of cat ownership and experience the endless love and companionship that a feline friend can bring.</div>
+                </div>
+            </button> 
+            <button class="hover:shadow-2xl transition-transform duration-300 transform hover:scale-110" onclick='animal()'>
+                <div class="flex gap-6 bg-green-400 rounded-xl" style="height: 300px; width: 1500px;">
+                    <div><img src="images/AnimalLogo.jpg" class="h-72 w-60 p-4 rounded-3xl fixed"></div>
+                    <div class="ml-10 pl-60 py-5 text-2xl pr-3">Animal adoption is a compassionate act that brings joy and fulfillment to both humans and animals. By adopting a pet, you provide a loving home to an animal in need. These furry friends, whether dogs, cats, or other animals, offer unwavering companionship and unconditional love. Each animal has a unique story, and by adopting, you become part of their journey. Experience the rewards of adopting and witness the transformation of a rescued animal into a beloved family member. Embrace the opportunity to make a difference in an animal's life by opening your heart and home to adoption.</div>
+                </div>
+            </button>
+        </div>  
+    </div>
+</div>
+    <script>
+      const dropdownDefaultButton = document.getElementById('dropdownDefaultButton');
+      const dropdown = document.getElementById('dropdown');
+      
+      dropdownDefaultButton.addEventListener('click', () => {
+        dropdown.classList.toggle('hidden');
+      });
+
+      document.addEventListener('click', (event) => {
+        const targetElement = event.target;
+        if (!targetElement.closest('#dropdown') && !targetElement.closest('#dropdownDefaultButton')) {
+          dropdown.classList.add('hidden');
+        }
+      });
+
+      const title = document.getElementById('title');
+  const animation = anime.timeline({
+    targets: '#title',
+    easing: 'easeOutExpo',
+    duration: 1000,
+  });
+
+  animation
+    .add({
+      opacity: [0, 1],
+    })
+    .add({
+      translateY: [-20, 0],
+    })
+    .add({
+      scale: [0.8, 1],
+    })
+    .add({
+      rotate: ['-10deg', '0deg'],
+    });
+    function dog() {
+            window.location.href = "dog.html";
+        }
+    function cat() {
+            window.location.href = "cat.html";
+        }
+    function animal() {
+            window.location.href = "animal.html";
+        }
+    function index(){
+            window.location.href = "index.html";
+        }
+
+    const searchbutton = document.getElementById("searchbutton");
+    const searchbar = document.getElementById("searchbar");
+    
+    searchbutton.addEventListener('click',()=>{
+        searchbar.classList.toggle('hidden');
+    });
+
+    </script>
+</body>
+</html>

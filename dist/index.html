@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoginPage</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+
+<body class="bg-fixed bg-cover bg-center h-screen"
+    style="background-image: url('images/pethomepage.jpg'); height: 100vh;">
+    <div class="grid place-items-start h-screen mx-10 gap-10">
+        <div class="self-end">
+            <div class="flex">
+                <h1 class="text-white text-6xl font-bold italic font-serif align-text-bottom">Welcome to Pawsome</h1>
+                <h2 class="text-sky-400 text-6xl font-bold italic font-serif">Adoptions</h2>
+            </div>
+        </div>
+        <div class="flex gap-10">
+            <div class="grid gap-3">
+                <input type="text" id="username"
+                    class="border border-gray-300 px-4 py-2 rounded-md w-64 h-15 ml-auto" placeholder="Enter username">
+                <input type="password" id="password"
+                    class="border border-gray-300 px-4 py-2 rounded-md w-64 h-15 ml-auto" placeholder="Enter password">
+                <button class="bg-blue-500 text-white rounded-xl h-10 hover:bg-blue-200 hover:text-black"
+                    onclick="login()">LOGIN</button>
+                <button class="bg-blue-500 text-white rounded-xl h-10 hover:bg-blue-200 hover:text-black"
+                    id="registerbutton" onclick="toggleRegister()">New User? Click here</button>
+            </div>
+            <div class="grid gap-3 hidden" id="register">
+                <input type="text" id="regUsername"
+                    class="border border-gray-300 px-4 py-2 rounded-md w-64 h-15 ml-auto" placeholder="Enter username">
+                <input type="password" id="regPassword"
+                    class="border border-gray-300 px-4 py-2 rounded-md w-64 h-15 ml-auto" placeholder="Enter password">
+                <input type="password" id="confirmPassword"
+                    class="border border-gray-300 px-4 py-2 rounded-md w-64 h-15 ml-auto" placeholder="Confirm password">
+                <button class="bg-blue-500 text-white rounded-xl h-10 hover:bg-blue-200 hover:text-black"
+                    onclick="submitRegistration()">SUBMIT</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const registrationForm = document.getElementById('register');
+        const registerButton = document.getElementById('registerbutton');
+
+        function toggleRegister() {
+            registrationForm.classList.toggle('hidden');
+        }
+
+        function login(){
+          window.location.href='home.html';
+        }
+
+        function submitRegistration() {
+            const regUsername = document.getElementById('regUsername').value;
+            const regPassword = document.getElementById('regPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (regUsername.trim() === '') {
+                alert('Please enter a username.');
+                return;
+            }
+
+            if (regPassword.trim() === '') {
+                alert('Please enter a password.');
+                return;
+            }
+
+            if (regPassword !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+
+
+            document.getElementById('regUsername').value = '';
+            document.getElementById('regPassword').value = '';
+            document.getElementById('confirmPassword').value = '';
+
+            registrationForm.classList.add('hidden');
+
+        }
+    </script>
+</body>
+
+</html>

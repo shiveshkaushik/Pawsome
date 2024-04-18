@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed Background Image</title>
+    <link href="output.css" rel="stylesheet">
+    <style>
+        @font-face {
+        font-family: 'CustomFont';
+    src: url('Font/Rock_Salt/RockSalt-Regular.ttf') format('truetype');
+    }
+
+    .title{
+    font-family: 'CustomFont',sans-serif;
+      }
+
+</style>
+
+</head>
+<body class="bg-fixed bg-center" style="background: linear-gradient(to bottom,yellow, white); height: 100vh;">
+    <div>
+    <nav class="flex justify-between items-center px-5 py-5 bg-transparent h-14">
+        <div class="flex gap-5">
+          <a href="#" class="mr-4 hover:shadow-2xl transition-transform duration-300 transform hover:scale-110" title="User"><img src="https://cdn-icons-png.flaticon.com/512/23/23144.png" class="h-10"></a>
+          <a href="#" class="mr-4 hover:shadow-2xl transition-transform duration-300 transform hover:scale-110" title="Post"><img src="https://img.icons8.com/?size=512&amp;id=1501&amp;format=png" class="h-10"></a>
+        </div>
+        <div class="flex gap-5">
+            <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" title="Menu"><img src="https://img.icons8.com/?size=512&id=82749&format=png" class="h-10"></button>
+          <div id="dropdown" class="mx-5 mt-10 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 absolute right-0">
+              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                <li>
+                  <a href="missingreport.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report Missing</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">About Us</a>
+                </li>
+                <li>
+                  <a href="home.html" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Home</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onclick="index()">Sign out</a>
+                </li>
+              </ul>
+          </div>
+        </div>
+    </nav>
+      
+    <div id="title" class="title grid place-content-center align-text-top text-blue-400 font-semibold text-9xl italic font-sans py-52">
+        <div class="flex">
+        <h1>P</h1>
+        <img src="images/Paw_Print.svg" class="h-36 p-1">
+        <h1>wSome Adoptions</h1>
+        </div>
+    </div>
+
+    <div class="relative grid place-content-center">
+        <textarea id="myTextarea" class="min-h-[12rem] px-4 py-2 text-xl border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 resize-none" value="" id="textbox" placeholder="Enter Missing Details like Location, Last seen, phone number.etc" style="width: 800px;"></textarea>
+      </div>
+      <div class="grid place-content-center h-10 mt-5" >
+        <button class="rounded-md bg-blue-500 text-white font-bold font-sans p-4 text-lg" onclick="submitreport()">
+            Save and Submit
+        </button>
+      </div>
+    
+</div>
+    <script>
+      const dropdownDefaultButton = document.getElementById('dropdownDefaultButton');
+      const dropdown = document.getElementById('dropdown');
+      
+      dropdownDefaultButton.addEventListener('click', () => {
+        dropdown.classList.toggle('hidden');
+      });
+
+      document.addEventListener('click', (event) => {
+        const targetElement = event.target;
+        if (!targetElement.closest('#dropdown') && !targetElement.closest('#dropdownDefaultButton')) {
+          dropdown.classList.add('hidden');
+        }
+      });
+
+      const textarea = document.getElementById('myTextarea');
+
+textarea.addEventListener('input', () => {
+  textarea.style.height = 'auto';
+  textarea.style.height = `${textarea.scrollHeight}px`;
+});
+
+    function submitreport(){
+        var textbox = document.getElementById('textbox');
+        textbox.value = '';
+    }
+
+    </script>
+</body>
+</html>
